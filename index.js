@@ -2,6 +2,7 @@ require("dotenv").config();
 const { BlobServiceClient } = require("@azure/storage-blob");
 //Obtengo la contraseña de acceso
 const storageAccountConnectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
+console.error(storageAccountConnectionString)
 //Creo una conexion con el cliente de blob y con mi access key
 const blobServiceClient = BlobServiceClient.fromConnectionString(storageAccountConnectionString);
 //***************************************** */
