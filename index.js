@@ -59,14 +59,12 @@ async function cargaBlob(req, containerClient) {
         blockBlobClient = containerClient.getBlockBlobClient(blobName),
         streamLength = req.file.buffer.length,
         stream = new PassThrough();
-    console.log(blockBlobClient)
     stream.end(req.file.buffer);
 
     try {
-        blockBlobClient.uploadStream(stream, streamLength);
+        await blockBlobClient.uploadStream(stream, streamLength);
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
-    console.log(blobName)
     return `https://elian29.blob.core.windows.net/elianphotos/${blobName}`
 }
