@@ -1,5 +1,6 @@
 require("dotenv").config();
 const { BlobServiceClient } = require("@azure/storage-blob");
+const cors = require('cors')
 //Obtengo la contraseña de acceso
 const storageAccountConnectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
 console.error(storageAccountConnectionString)
@@ -18,6 +19,7 @@ const express = require("express"),
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors())
 
 app.post('/', uploadStrategy ,async function (req, res, next) {
     try {
