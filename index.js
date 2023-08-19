@@ -52,9 +52,9 @@ const filters = {
 
 async function getNotion(filterQuery) {
   const query = { database_id: databaseId };
+  let { key, filterBy } = filterQuery;
 
-  if (filterQuery) {
-    let { key, filterBy } = filterQuery;
+  if (key) {
     console.log(key);
     console.log(filters[key](filterBy));
     query.filter = filters[key](filterBy);
@@ -92,11 +92,10 @@ app.post("/", upload.single("image"), async function (req, res, next) {
 
 app.get("/notion", async function (req, res) {
   try {
-    console.log(req.query.filterBy);
     res.send(await getNotion(req.query));
     res.end();
   } catch (err) {
-    console.error(err);
+    res.send("hubo un error" + err);
   }
 });
 
