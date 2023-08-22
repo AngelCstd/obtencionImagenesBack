@@ -25,7 +25,7 @@ const filters = {
   },
   Category: (filterBy) => {
     return {
-      property: "Categoría",
+      property: "Categoria",
       select: {
         equals: filterBy,
       },
@@ -41,7 +41,7 @@ const filters = {
   },
   Comprados: (filterBy) =>{
     return {
-        property: 'comprados',
+        property: 'Comprados',
         checkbox: {
           equals: Boolean(filterBy),
         },
